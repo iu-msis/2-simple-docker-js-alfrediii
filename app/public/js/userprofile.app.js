@@ -2,10 +2,10 @@ var app = new Vue({
   el: '#randomProfile',
   data: {
     randName:'',
-    randEmail:'',
+    randOrigin:'',
     randDOB:'',
     randAge:'',
-    randCountry:'',
+    randEmail:'',
     randImg:'',
     randImgThumb:''
   },
@@ -20,12 +20,12 @@ var app = new Vue({
         var randUser = data.results[0]
         console.log(randUser);
         this.randName = randUser.name.first + ' ' + randUser.name.last;
-        this.randEmail = randUser.email.slice(0,-11) + 'iu.edu';
+        this.randOrigin = randUser.location.city +', '+ randUser.location.country;
         this.randDOB = randUser.dob.date.substring(5,7)+'/'
-        +randUser.dob.date.substring(8,10)
-        +'/'+randUser.dob.date.substring(0,4);
+        +randUser.dob.date.substring(8,10)+'/'
+        +randUser.dob.date.substring(0,4);
         this.randAge = randUser.dob.age;
-        this.randCountry = randUser.location.city +', '+ randUser.location.country;
+        this.randEmail = randUser.email.slice(0,-11) + 'iu.edu';
         this.randImg = randUser.picture.large;
         this.randImgThumb = randUser.picture.thumbnail;
       });
