@@ -39,9 +39,14 @@
         </div>
         <div class="col-6">
           <h1>Employee of the Month:</h1>
-          <a href="./images/DrGachet.jpg"><img src="./images/DrGachet.jpg" alt="Best Book!" class="center"></a>
-          <p><cite><a href="https://en.wikipedia.org/wiki/File:Portrait_of_Dr._Gachet.jpg">Portrait of Dr. Gachet (First Version)</a></cite> by Vincent van Gogh. Painted in 1890.</p>
           <div id="randomProfile">
+
+          <a href="./images/EOM.png"><img src="./images/EOM.png" alt="Employee of the Month!" class="center"></a>
+          <p><cite><a href="https://www.thefitzmke.com/post/2019/08/20/august-employee-of-the-month">Employee of the Month</a></cite> by Jon J. Posted in 2019.</p>
+          <a v-bind:href="randImgThumb">
+            <center><img v-bind:src="randImg"></center>
+          </a>
+          <p></p>
           <table style="width:100%">
             <tr>
               <th>Name:</th>
@@ -61,7 +66,7 @@
             </tr>
             <tr>
               <th>Email:</th>
-              <td><a href = "mailto:{{randEmail}}">{{randEmail}}</a></td>
+              <td><a v-bind:href="'mailto:' + randEmail">{{randEmail}}</a></td>
             </tr>
           </table>
           </div>
