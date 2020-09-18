@@ -21,11 +21,11 @@ var app = new Vue({
         {
         var randUser = data.results[0]
         console.log(randUser);
-        this.randName = randUser.name.first + '' + randUser.name.last;
+        this.randName = randUser.name.first + ' ' + randUser.name.last;
         this.randEmail = randUser.email;
-        this.randDOB = randUser.dob.date.substring(5,10) + '-' + randUser.dob.date.substring(0,4);
+        this.randDOB = randUser.dob.date;
         this.randAge = randUser.dob.age;
-        this.randCountry = randUser.location.country;
+        this.randCountry = randUser.location.city +', '+ randUser.location.country;
         this.randImg = randUser.picture.large;
         this.randImgThumb = randUser.picture.thumbnail;
       });
