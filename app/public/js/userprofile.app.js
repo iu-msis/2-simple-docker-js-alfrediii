@@ -15,7 +15,7 @@ var app = new Vue({
   },
   methods:{
     fetchRand: function() {
-      fetch('https://randomuser.me/api/')
+      fetch("https://randomuser.me/api")
       .then(response => response.json())
       .then(data =>
         {
