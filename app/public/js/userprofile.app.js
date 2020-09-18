@@ -17,7 +17,7 @@ var app = new Vue({
     fetchRand: function() {
       fetch("https://randomuser.me/api").then(response => response.json()).then(data =>
         {
-        var randUser = data.results[0]
+        var randUser = data.results[0];
         console.log(randUser);
         this.randName = randUser.name.first + ' ' + randUser.name.last;
         this.randOrigin = randUser.location.city +', '+ randUser.location.country;
