@@ -15,7 +15,9 @@ var app = new Vue({
   },
   methods:{
     fetchRand: function() {
-      fetch('https://randomuser.me/api/').then(response => response.json()).then(data =>
+      fetch('https://randomuser.me/api/')
+      .then(response => response.json())
+      .then(data =>
         {
         var randUser = data.results[0]
         console.log(randUser);
@@ -26,7 +28,7 @@ var app = new Vue({
         this.randCountry = randUser.location.country;
         this.randImg = randUser.picture.large;
         this.randImgThumb = randUser.picture.thumbnail;
-      })
+      });
     },
   },
 })
