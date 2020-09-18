@@ -23,7 +23,7 @@ var app = new Vue({
         console.log(randUser);
         this.randName = randUser.name.first + ' ' + randUser.name.last;
         this.randEmail = randUser.email.slice(0,-11) + 'iu.edu';
-        this.randDOB = randUser.dob.date;
+        this.randDOB = randUser.dob.date.format(mm/dd/yyy);
         this.randAge = randUser.dob.age;
         this.randCountry = randUser.location.city +', '+ randUser.location.country;
         this.randImg = randUser.picture.large;
