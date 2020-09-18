@@ -32,3 +32,5 @@ var app = new Vue({
     },
   },
 })
+
+// refresher on javascript objects needed
