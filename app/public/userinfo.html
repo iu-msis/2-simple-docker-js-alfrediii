@@ -39,7 +39,7 @@
         </div>
         <div class="col-6">
           <h1>Employee of the Month:</h1>
-          <form method=“post” v-on:submit="randomProfile">
+          <form method=“post” v-on:submit.prevent="randomProfile">
           <div id="randomProfile">
           <a href="./images/EOM.png"><img src="./images/EOM.png" alt="Employee of the Month!" class="center"></a>
           <p><cite><a href="https://www.thefitzmke.com/post/2019/08/20/august-employee-of-the-month">Employee of the Month</a></cite> by Jon J. Posted in 2019.</p>
