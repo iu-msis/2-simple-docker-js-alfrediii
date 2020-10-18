@@ -24,8 +24,8 @@ $stmt = $db->prepare(
 );
 
 $stmt->execute([
-  $guid,
-  $_POST['id'],
+  $id,
+  //$_POST['id'],
   $_POST['name'],
   $_POST['commentText']
 ]);
