@@ -19,15 +19,16 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO Comments (id, name, commentText)
-  VALUES (?, ?, ?)'
+  'INSERT INTO Patient (patientGuid, firstName, lastName, dob, sexAtBirth)
+  VALUES (?, ?, ?, ?, ?)'
 );
 
 $stmt->execute([
-  $id,
-  //$_POST['id'],
-  $_POST['name'],
-  $_POST['commentText']
+  $guid,
+  $_POST['firstName'],
+  $_POST['lastName'],
+  $_POST['dob'],
+  $_POST['sexAtBirth']
 ]);
 
 // If needed, get auto-generated PK from DB
@@ -37,4 +38,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../comments/?id=' . $id);
+header('Location: ../records/?guid=' . $guid);
