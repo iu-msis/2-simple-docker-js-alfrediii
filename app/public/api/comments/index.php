@@ -6,9 +6,9 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT m.certificationID as cID, fname, lname,  certName, certAgency, certExp, dob
-        FROM person p join certification c join memberCert m on (p.personID=m.personID) and (c.certificationID=m.certificationID)
-        ORDER BY cID';
+$sql = 'SELECT *
+        FROM Comments
+        ORDER BY id';
 $vars = [];
 
 //if (isset($_GET['guid'])) {
