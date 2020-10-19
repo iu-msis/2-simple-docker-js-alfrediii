@@ -9,7 +9,7 @@ $db = DbConnection::getConnection();
 $sql = 'SELECT *
         FROM Comments
         ORDER BY id';
-$vars = [];
+$vars = [ ];
 
 //if (isset($_GET['guid'])) {
   // This is an example of a parameterized query
