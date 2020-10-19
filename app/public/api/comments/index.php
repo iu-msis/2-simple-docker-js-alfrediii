@@ -11,11 +11,11 @@ $sql = 'SELECT *
         ORDER BY id';
 $vars = [ ];
 
-//if (isset($_GET['guid'])) {
-  // This is an example of a parameterized query
-  //$sql = 'SELECT * FROM Patient WHERE patientGuid = ?';
-  //$vars = [ $_GET['guid'] ];
-//}
+if (isset($_GET['id'])) {
+  //This is an example of a parameterized query
+  $sql = 'SELECT * FROM Comments WHERE id = ?';
+  $vars = [ $_GET['id'] ];
+}
 
 $stmt = $db->prepare($sql);
 $stmt->execute($vars);
