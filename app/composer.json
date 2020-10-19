@@ -1,9 +1,9 @@
 {
-    "name": "2-simple-docker-js-alfrediii",
-    "description": "A class project",
+    "name": "iu-msis/project-triage-2020",
+    "description": "An in-class example project",
     "license": "private",
     "authors": [{
-        "name": "Alfred Johnson III"
+        "name": "Tom Gregory"
     }],
     "require": {
       "ramsey/uuid": "^4.1"
@@ -12,3 +12,4 @@
         "classmap": ["class/DbConnection.php"]
     }
 }
+
