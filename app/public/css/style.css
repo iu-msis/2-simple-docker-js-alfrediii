@@ -82,7 +82,7 @@ p  {
 table {
   font-family: sans-serif;
   border-collapse: collapse;
-  width: 80%;
+  width: 90%;
 }
 
 td,
@@ -98,7 +98,6 @@ th[role=columnheader]:not(.no-sort) {
 }
 
 th[role=columnheader]:not(.no-sort):after {
-	content: '';
 	float: right;
 	margin-top: 7px;
 	border-width: 0 4px 4px;
@@ -132,5 +131,6 @@ button {
 }
 
 #username {
-  color: gold;
+  color: black;
+  font-weight: bold;
 }
