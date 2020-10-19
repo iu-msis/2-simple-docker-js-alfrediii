@@ -1,40 +1,84 @@
-<?php
+var app = new Vue({
+  el: '#commentTable',
+  data: {
+    commentList: [{
+      id: "",
+      name: "",
+      commentText: ""
+    }],
+    newComment: {
+      id: "",
+      name: "",
+      commentText: ""
+    }
+  },
+  methods: {
+    commentData() {
+      return {
+        id: "",
+        name: "",
+        commentText: ""
+      }
+    }
+  },
+  created() {
+    fetch("api/comments/index.php")
+    .then( response => response.json() )
+    .then( json => {
+      this.commentList = json;
+      console.log(this.newComment)}
+    );
+  }
+})
 
-require 'common.php';
+var app = new Vue({
+  el: '#newCommentForm',
+  data: {
+    commentList: [{
+      id: "",
+      name: "",
+      commentText: ""
+    }],
+    newComment: {
+      id: "",
+      name: "",
+      commentText: ""
+    }
+  },
+methods: {
+  fetchComment(){
+    fetch("api/comments/").then(response => response.json())
+    .then(json => {
+      this.commentList=json;
+      console.log(this.commentList);
+      });
+    },
+  creatingComments() {
+    fetch('api/comments/create.php', {
+      method:'POST',
+      body: JSON.stringify(this.newComment),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    })
+    .then(response => response.json()).then(json => {
+      console.log("Post:", json);
+      this.commentList.push(json[0]);
+      this.newComment = this.newCommentData();
+        });
 
-// Only need this line if we're creating GUIDs (see comments below)
-use Ramsey\Uuid\Uuid;
-
-// Step 0: Validate the incoming data
-// This code doesn't do that, but should ...
-// For example, if the date is empty or bad, this insert fails.
-
-// As part of this step, create a new GUID to use as primary key (suitable for cross-system use)
-// If we weren't using a GUID, allowing auto_increment to work would be best (don't pass `id` to `INSERT`)
-$guid = Uuid::uuid4()->toString(); // i.e. 25769c6c-d34d-4bfe-ba98-e0ee856f3e7a
-
-// Step 1: Get a datase connection from our helper class
-$db = DbConnection::getConnection();
-
-// Step 2: Create & run the query
-// Note the use of parameterized statements to avoid injection
-$stmt = $db->prepare(
-  'INSERT INTO Comments (id, name, commentText)
-  VALUES (?, ?, ?)'
-);
-
-$stmt->execute([
-  $id,
-  //$_POST['id'],
-  $_POST['name'],
-  $_POST['commentText']
-]);
-
-// If needed, get auto-generated PK from DB
-// $pk = $db->lastInsertId();  // https://www.php.net/manual/en/pdo.lastinsertid.php
-
-// Step 4: Output
-// Here, instead of giving output, I'm redirecting to the SELECT API,
-// just in case the data changed by entering it
-header('HTTP/1.1 303 See Other');
-header('Location: ../comments/?id=' . $id);
+    console.log("Create (POSTing)...!");
+    console.log(this.newComment);
+    },
+  newCommentData(){
+    return {
+      id:"",
+      name: "",
+      commentText: ""
+      };
+    }
+  },
+  created() {
+    this.fetchComment();
+  }
+})
