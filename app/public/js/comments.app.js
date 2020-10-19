@@ -1,25 +1,7 @@
-var app = new Vue({
+var tableApp = new Vue({
   el: '#commentTable',
   data: {
-    commentList: [{
-      id: "",
-      name: "",
-      commentText: ""
-    }],
-    newComment: {
-      id: "",
-      name: "",
-      commentText: ""
-    }
-  },
-  methods: {
-    commentData() {
-      return {
-        id: "",
-        name: "",
-        commentText: ""
-      }
-    }
+    commentList: []
   },
   created() {
     fetch("api/comments/index.php")
@@ -31,14 +13,9 @@ var app = new Vue({
   }
 })
 
-var app = new Vue({
+var formApp = new Vue({
   el: '#newCommentForm',
   data: {
-    commentList: [{
-      id: "",
-      name: "",
-      commentText: ""
-    }],
     newComment: {
       id: "",
       name: "",
@@ -46,13 +23,6 @@ var app = new Vue({
     }
   },
 methods: {
-  fetchComment(){
-    fetch("api/comments/").then(response => response.json())
-    .then(json => {
-      this.commentList=json;
-      console.log(this.commentList);
-      });
-    },
   creatingComments() {
     fetch('api/comments/create.php', {
       method:'POST',
@@ -63,10 +33,9 @@ methods: {
     })
     .then(response => response.json()).then(json => {
       console.log("Post:", json);
-      this.commentList.push(json[0]);
+      tableApp.commentList.push(json[0]);
       this.newComment = this.newCommentData();
         });
-
     console.log("Create (POSTing)...!");
     console.log(this.newComment);
     },
@@ -77,8 +46,5 @@ methods: {
       commentText: ""
       };
     }
-  },
-  created() {
-    this.fetchComment();
   }
 }) 
