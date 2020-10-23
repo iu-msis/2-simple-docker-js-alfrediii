@@ -5,7 +5,7 @@ var tableApp = new Vue({
   },
   created() {
     fetch("api/comments/index.php")
-    .then( response => response.json() )
+    .then( response => response.json())
     .then( json => {
       this.commentList = json;
       console.log(this.newComment)}
